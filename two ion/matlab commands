@@ -1,0 +1,1628 @@
+global colloid_folder which_time
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_GaussIC/';
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en1_GaussIC/';
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+table_exp = readtable('data/TD_experiment1.xlsx');
+data_exp = table2array(table_exp(2:end,1:7));
+x_exp = [cellfun(@str2num, data_exp(:,1))]';
+nt0exp = [cellfun(@str2num, data_exp(:,2))]';
+nt02exp = [cellfun(@str2num, data_exp(:,3))]';
+nt04exp = [cellfun(@str2num, data_exp(:,4))]';
+nt06exp = [cellfun(@str2num, data_exp(:,5))]';
+nt08exp = [cellfun(@str2num, data_exp(:,6))]';
+nt1exp = [cellfun(@str2num, data_exp(:,7))]';
+
+X = {x_exp;x_exp;x_exp;x_exp;x_exp;x_exp};
+Y = {nt0exp nt02exp nt04exp nt06exp nt08exp nt1exp};
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5];[0.9 0.9 0]];
+labels={'$$\tau=0$$','$$\tau=0.2$$','$$\tau=0.4$$','$$\tau=0.6$$','$$\tau=0.8$$','$$\tau=1$$'}';
+plotter_multX(X,Y,colors,labels,6,12)
+
+n_yavg_3D
+indT_disp = ind_closest(0.0,t);
+Y7 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.2,t);
+Y8 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.4,t);
+Y9 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.6,t);
+Y10 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.8,t);
+Y11 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y12 = N_yavg_solved(indT_disp,:,1);
+
+X = {x_exp;x_exp;x_exp;x_exp;x_exp;x_exp;x;x;x;x;x;x};
+Y = {nt0exp nt02exp nt04exp nt06exp nt08exp nt1exp Y7 Y8 Y9 Y10 Y11 Y12}';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5];[0.9 0.9 0]];
+labels={'$$\tau=0$$','$$\tau=0.2$$','$$\tau=0.4$$','$$\tau=0.6$$','$$\tau=0.8$$','$$\tau=1$$'};
+plotter_multX(X,Y',colors,labels,6,12)
+
+
+
+n_yavg_3D
+indT_disp = ind_closest(0.0,t);
+Y7 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.2,t);
+Y8 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.4,t);
+Y9 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.6,t);
+Y10 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.8,t);
+Y11 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y12 = N_yavg_solved(indT_disp,:,1);
+
+X = {x;x;x;x;x;x};
+Y = {Y7 Y8 Y9 Y10 Y11 Y12}';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5];[0.9 0.9 0]];
+labels={'$$\tau=0$$','$$\tau=0.2$$','$$\tau=0.4$$','$$\tau=0.6$$','$$\tau=0.8$$','$$\tau=1$$'};
+plotter_multX(X,Y',colors,labels,6,12)
+
+
+
+
+
+table_exp = readtable('data/TD_experiment1.xlsx');
+data_exp = table2array(table_exp(2:end,1:7));
+x_exp = [cellfun(@str2num, data_exp(:,1))]';
+nt0exp = [cellfun(@str2num, data_exp(:,2))]';
+nt04exp = [cellfun(@str2num, data_exp(:,4))]';
+nt1exp = [cellfun(@str2num, data_exp(:,7))]';
+
+X = {x_exp;x_exp;x_exp};
+Y = {nt0exp nt04exp nt1exp};
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$\tau=0$$','$$\tau=0.4$$','$$\tau=1$$'}';
+plotter_multX(X,Y,colors,labels,6,12)
+
+n_yavg_3D
+indT_disp = ind_closest(0.0,t);
+Y4 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.4,t);
+Y5 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y6 = N_yavg_solved(indT_disp,:,1);
+
+X = {x_exp;x_exp;x_exp;x;x;x};
+Y = {nt0exp nt04exp nt1exp Y4 Y5 Y6}';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$\tau=0$$','$$\tau=0.4$$','$$\tau=1$$'};
+plotter_multX(X,Y',colors,labels,3,6)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%compare 2D to 3D
+
+n_yavg_withCofVf
+indT_disp = ind_closest(0.2,t);
+Y1 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.4,t);
+Y2 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y3 = N_yavg_solved(indT_disp,:,1);
+X1 = x;
+
+n_yavg_3D
+indT_disp = ind_closest(0.2,t);
+Y4 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(0.4,t);
+Y5 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y6 = N_yavg_solved(indT_disp,:,1);
+X2 = x;
+
+X = {X1;X1;X1;X2;X2;X2};
+Y = {Y1 Y2 Y3 Y4 Y5 Y6}';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$\tau=0.1$$','$$\tau=0.4$$','$$\tau=1$$'};
+plotter_multX(X,Y',colors,labels,3,6)
+
+
+global W 
+Ws = 0.025:0.001:0.5; h_over_w = zeros(size(Ws)); ratios = zeros(size(Ws));
+mm = 1;
+while mm <= length(Ws)
+	W = Ws(mm);
+	n_yavg_3Dcalc
+	h_over_w(mm) = 0.025/W; ratios(mm) = modDiffConst/(0.025^2)*105;
+	mm = mm+1;
+end
+plotter_multX({[h_over_w]},{[ratios]},[[0 0 0]],{'a'},2,4)
+
+%%%%
+global W 
+Ws = 0.025:0.001:0.5; h_over_w = zeros(size(Ws)); ratios = zeros(size(Ws));
+mm = 1;
+while mm <= length(Ws)
+	W = Ws(mm);
+	n_yavg_3Dcalc
+	h_over_w(mm) = 0.025/W; ratios(mm) = modDiffConst/(0.025^2)*210;
+	mm = mm+1;
+end
+plotter_multX({[h_over_w]},{[ratios]},[[0 0 0]],{'a'},2,4)
+%%%%
+
+
+global W 
+
+n_yavg_withCofVf
+indT_disp = ind_closest(0.2,t);
+Y1 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y2 = N_yavg_solved(indT_disp,:,1);
+X1 = x;
+
+W = 0.06;
+n_yavg_3D
+indT_disp = ind_closest(0.2,t);
+Y3 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y4 = N_yavg_solved(indT_disp,:,1);
+X2 = x;
+
+W = 0.2;
+n_yavg_3D
+indT_disp = ind_closest(0.2,t);
+Y5 = N_yavg_solved(indT_disp,:,1);
+indT_disp = ind_closest(1.0,t);
+Y6 = N_yavg_solved(indT_disp,:,1);
+X3 = x;
+
+X = {X1;X1;X2;X2;X3;X3};
+Y = {Y1 Y2 Y3 Y4 Y5 Y6}';
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'$$\tau=0.2$$','$$\tau=1$$'};
+plotter_multX(X,Y',colors,labels,2,4)
+
+%%%%%%%%%%%%
+
+%run fine grids
+
+parameter_file_upload = 'parameter_files_n/June_Dp2_Pw4_LH40_dX200'
+np_calc_gaussianIC
+parameter_file_upload = 'parameter_files_n/June_Dp3_LH40_dX200'
+np_calc_gaussianIC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%<n> vs x for varying t and compare disp
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_GaussIC/';
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en1_GaussIC/';
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en1_GaussIC_LH40/';
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_GaussIC_LH40/';
+colloid_folder = 'data/colloid/June_Dp2_LH40/'
+colloid_folder = 'data/colloid/June_Dp2_LH40_noVfy/'
+colloid_folder = 'data/colloid/June_Dp2_LH40_finerGrid/'
+colloid_folder = 'data/colloid/June_Dp3_LH40_finerGrid/'
+colloid_folder = 'data/colloid/June_Dp2_Pw4_LH40_finerGrid/'
+colloid_folder = 'data/colloid/June_Dp2_LH40_finerGridX/'
+colloid_folder = 'data/colloid/June_Dp2_LH40_dX200/'
+colloid_folder = 'data/colloid/June_Dp2_LH40_Pw4_dX200/'
+colloid_folder = 'data/colloid/June_Dp3_LH40_dX200/'
+
+
+which_time = 0.1;
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+which_time = 0.5;
+visualize
+X2 = XYTcolloid_cell{1,1};
+Y2 = mean(colloid_cell{count,1},2);
+which_time = 1;
+visualize
+X3 = XYTcolloid_cell{1,1};
+Y3 = mean(colloid_cell{count,1},2);
+which_time = 1.5;
+visualize
+X4 = XYTcolloid_cell{1,1};
+Y4 = mean(colloid_cell{count,1},2);
+which_time = 2.0;
+visualize
+X5 = XYTcolloid_cell{1,1};
+Y5 = mean(colloid_cell{count,1},2);
+
+n_yavg_withCofVf
+indT_disp = ind_closest(0.1,t);
+Y6 = N_yavg_solved(indT_disp,:,1)';
+indT_disp = ind_closest(0.5,t);
+Y7 = N_yavg_solved(indT_disp,:,1)';
+indT_disp = ind_closest(1,t);
+Y8 = N_yavg_solved(indT_disp,:,1)';
+indT_disp = ind_closest(1.5,t);
+Y9 = N_yavg_solved(indT_disp,:,1)';
+indT_disp = ind_closest(2,t);
+Y10 = N_yavg_solved(indT_disp,:,1)';
+
+X = {X1; X2; X3; X4; X5;x;x;x;x;x}; Y = {Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Y10};
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]];
+labels={'$$\tau=0.1$$','$$\tau=0.5$$','$$\tau=1$$','$$\tau=1.5$$','$$\tau=2$$'};
+plotter_multX(X,Y',colors,labels,5,10)
+
+
+%%%%%%%%%%%%%%%
+% compare 2D's
+
+which_time = 0.1;
+visualize
+X6 = XYTcolloid_cell{1,1};
+Y6 = mean(colloid_cell{count,1},2);
+which_time = 0.5;
+visualize
+X7 = XYTcolloid_cell{1,1};
+Y7 = mean(colloid_cell{count,1},2);
+which_time = 1;
+visualize
+X8 = XYTcolloid_cell{1,1};
+Y8 = mean(colloid_cell{count,1},2);
+which_time = 1.5;
+visualize
+X9 = XYTcolloid_cell{1,1};
+Y9 = mean(colloid_cell{count,1},2);
+which_time = 2.0;
+visualize
+X10 = XYTcolloid_cell{1,1};
+Y10 = mean(colloid_cell{count,1},2);
+X = {X1;X2;X3;X4;X5;X6;X7;X8;X9;X10}; Y = {Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Y10};
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]];
+labels={'$$\tau=0.1$$','$$\tau=0.5$$','$$\tau=1$$','$$\tau=1.5$$','$$\tau=2$$'};
+plotter_multX(X,Y',colors,labels,5,10)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+which_time = 1.5;
+visualize_time
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2)*cumulative_nParticles;
+n_yavg_withCofVf
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+counter = 1; int_x = zeros(1,time_integrate_range);
+while counter <= time_integrate_range
+	int_x(counter) = trapz(x,N_yavg_solved(counter,:,1));
+	counter = counter+1;
+end
+cumInt = 2/l_h*trapz(time(1:time_integrate_range),int_x(1:time_integrate_range));
+Y2 = N_yavg_solved(indT_disp,:,1)'*cumInt;
+X = [X1; X2]; Y = [Y1 Y2];
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multX(X,Y',colors,labels)
+
+n_yavg_withCofVf
+counter = 1; int_x = zeros(1,length(t));
+while counter <= length(t)
+	int_x(counter) = trapz(x,N_yavg_solved(counter,:,1));
+	counter = counter+1;
+end
+plot_one_line(t,int_x)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% solute with and without diffusioosmosis
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+which_time = 0.1;
+visualize
+X1=XYTsolute_cell{1,1};
+Y1=mean(c_interpolated(:,:,count),2);
+which_time = 0.5;
+visualize
+Y2=mean(c_interpolated(:,:,count),2);
+which_time = 1;
+visualize
+Y3=mean(c_interpolated(:,:,count),2);
+which_time = 1.75;
+visualize
+X=XYTsolute_cell{1,1};
+Y4=mean(c_interpolated(:,:,count),2);
+
+n_yavg_withCofVf
+indT_disp = ind_closest(0.1,t); Y5 = N_yavg_solved(indT_disp,:,2)';
+indT_disp = ind_closest(0.5,t); Y6 = N_yavg_solved(indT_disp,:,2)';
+indT_disp = ind_closest(1,t); Y7 = N_yavg_solved(indT_disp,:,2)';
+indT_disp = ind_closest(1.75,t); Y8 = N_yavg_solved(indT_disp,:,2)';
+
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0.5 0.5 0.5]];
+Y=[Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8]; X=[X1;X1;X1;X1;x;x;x;x];
+labels={'$\tau=0.1$','$\tau=0.5$','$\tau=1.0$','$\tau=1.75$'};
+plotter_multX(X,Y',colors,labels)
+
+
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+which_time = 0.1;
+visualize
+X1=XYTsolute_cell{1,1};
+Y1=mean(c_interpolated(:,:,count),2);
+which_time = 0.5;
+visualize
+Y2=mean(c_interpolated(:,:,count),2);
+which_time = 1;
+visualize
+Y3=mean(c_interpolated(:,:,count),2);
+which_time = 1.75;
+visualize
+X=XYTsolute_cell{1,1};
+Y4=mean(c_interpolated(:,:,count),2);
+
+n_yavg_03142021
+indT_disp = ind_closest(0.1,t); [Y5,~] = solute_withDerivative_copy(x,t(indT_disp));
+indT_disp = ind_closest(0.5,t); [Y6,~] = solute_withDerivative_copy(x,t(indT_disp));
+indT_disp = ind_closest(1,t); [Y7,~] = solute_withDerivative_copy(x,t(indT_disp));
+indT_disp = ind_closest(1.75,t); [Y8,~] = solute_withDerivative_copy(x,t(indT_disp));
+
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0.5 0.5 0.5]];
+Y=[Y1 Y2 Y3 Y4 Y5' Y6' Y7' Y8']; X=[X1;X1;X1;X1;x;x;x;x];
+labels={'$\tau=0.1$','$\tau=0.5$','$\tau=1.0$','$\tau=1.75$'};
+plotter_multX(X,Y',colors,labels)
+
+
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+which_time = 0.1;
+visualize
+X1=XYTsolute_cell{1,1};
+Y1=mean(c_interpolated(:,:,count),2);
+which_time = 0.5;
+visualize
+Y2=mean(c_interpolated(:,:,count),2);
+which_time = 1;
+visualize
+Y3=mean(c_interpolated(:,:,count),2);
+which_time = 1.75;
+visualize
+X=XYTsolute_cell{1,1};
+Y4=mean(c_interpolated(:,:,count),2);
+n_yavg_withCofVf
+indT_disp = ind_closest(0.1,t); Y5 = N_yavg_solved(indT_disp,:,2)';
+indT_disp = ind_closest(0.5,t); Y6 = N_yavg_solved(indT_disp,:,2)';
+indT_disp = ind_closest(1,t); Y7 = N_yavg_solved(indT_disp,:,2)';
+indT_disp = ind_closest(1.75,t); Y8 = N_yavg_solved(indT_disp,:,2)';
+n_yavg_03142021
+indT_disp = ind_closest(0.1,t); [Y9,~] = solute_withDerivative_copy(x,t(indT_disp));
+indT_disp = ind_closest(0.5,t); [Y10,~] = solute_withDerivative_copy(x,t(indT_disp));
+indT_disp = ind_closest(1,t); [Y11,~] = solute_withDerivative_copy(x,t(indT_disp));
+indT_disp = ind_closest(1.75,t); [Y12,~] = solute_withDerivative_copy(x,t(indT_disp));
+
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0.5 0.5 0.5]];
+Y=[Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9' Y10' Y11' Y12']; X=[X1;X1;X1;X1;x;x;x;x;x;x;x;x];
+labels={'$\tau=0.1$','$\tau=0.5$','$\tau=1.0$','$\tau=1.75$'};
+plotter_multX(X,Y',colors,labels)
+
+
+% n'/<n> vs x for varying t
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+
+which_time = 0.1;
+visualize
+X1 = XYTcolloid_cell{1,1};
+nMean = mean(colloid_cell{count,1},2);
+nPertSim = colloid_cell{count,1}-nMean;
+Y1 = max(abs(nPertSim(:,:)'))'./nMean;
+which_time = 0.5;
+visualize
+X2 = XYTcolloid_cell{1,1};
+nMean = mean(colloid_cell{count,1},2);
+nPertSim = colloid_cell{count,1}-nMean;
+Y2 = max(abs(nPertSim(:,:)'))'./nMean;
+which_time = 1;
+visualize
+X3 = XYTcolloid_cell{1,1};
+nMean = mean(colloid_cell{count,1},2);
+nPertSim = colloid_cell{count,1}-nMean;
+Y3 = max(abs(nPertSim(:,:)'))'./nMean;
+which_time = 1.5;
+visualize
+X4 = XYTcolloid_cell{1,1};
+nMean = mean(colloid_cell{count,1},2);
+nPertSim = colloid_cell{count,1}-nMean;
+Y4 = max(abs(nPertSim(:,:)'))'./nMean;
+which_time = 2.0;
+visualize
+X5 = XYTcolloid_cell{1,1};
+nMean = mean(colloid_cell{count,1},2);
+nPertSim = colloid_cell{count,1}-nMean;
+Y5 = max(abs(nPertSim(:,:)'))'./nMean;
+
+X = [X1; X2; X3; X4; X5]; Y = [Y1 Y2 Y3 Y4 Y5];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]];
+labels={'$$\tau=0.1$$','$$\tau=0.5$$','$$\tau=1$$','$$\tau=1.5$$','$$\tau=2$$'};
+plotter_multX(X,Y',colors,labels)
+
+
+% <n> vs x for varying t
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+
+which_time = 0.1;
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+which_time = 0.5;
+visualize
+X2 = XYTcolloid_cell{1,1};
+Y2 = mean(colloid_cell{count,1},2);
+which_time = 1;
+visualize
+X3 = XYTcolloid_cell{1,1};
+Y3 = mean(colloid_cell{count,1},2);
+which_time = 1.5;
+visualize
+X4 = XYTcolloid_cell{1,1};
+Y4 = mean(colloid_cell{count,1},2);
+which_time = 2.0;
+visualize
+X5 = XYTcolloid_cell{1,1};
+Y5 = mean(colloid_cell{count,1},2);
+
+X = [X1; X2; X3; X4; X5]; Y = [Y1 Y2 Y3 Y4 Y5];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]];
+labels={'$$\tau=0.1$$','$$\tau=0.5$$','$$\tau=1$$','$$\tau=1.5$$','$$\tau=2$$'};
+plotter_multX(X,Y',colors,labels)
+
+%<n>/nMax vs x for varying t, compare disp
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_GaussIC/';
+
+which_time = 0.1;
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X1(2:end),Y1(2:end)); Y1 = Y1/nMax;
+which_time = 0.5;
+visualize
+X2 = XYTcolloid_cell{1,1};
+Y2 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X2(2:end),Y2(2:end)); Y2 = Y2/nMax;
+which_time = 1;
+visualize
+X3 = XYTcolloid_cell{1,1};
+Y3 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X3(2:end),Y3(2:end)); Y3 = Y3/nMax;
+which_time = 1.5;
+visualize
+X4 = XYTcolloid_cell{1,1};
+Y4 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X4(2:end),Y4(2:end)); Y4 = Y4/nMax;
+which_time = 2.0;
+visualize
+X5 = XYTcolloid_cell{1,1};
+Y5 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X5(2:end),Y5(2:end)); Y5 = Y5/nMax;
+
+n_yavg_withCofVf%n_yavg_03142021
+indT_disp = ind_closest(0.1,t);
+Y6 = N_yavg_solved(indT_disp,:,1)';
+[~,~,~,~,nMax_disp] = width_nAvg(x,Y6); Y6=Y6/nMax_disp;
+indT_disp = ind_closest(0.5,t);
+Y7 = N_yavg_solved(indT_disp,:,1)';
+[~,~,~,~,nMax_disp] = width_nAvg(x,Y7); Y7=Y7/nMax_disp;
+indT_disp = ind_closest(1,t);
+Y8 = N_yavg_solved(indT_disp,:,1)';
+[~,~,~,~,nMax_disp] = width_nAvg(x,Y8); Y8=Y8/nMax_disp;
+indT_disp = ind_closest(1.5,t);
+Y9 = N_yavg_solved(indT_disp,:,1)';
+[~,~,~,~,nMax_disp] = width_nAvg(x,Y9); Y9=Y9/nMax_disp;
+indT_disp = ind_closest(2,t);
+Y10 = N_yavg_solved(indT_disp,:,1)';
+[~,~,~,~,nMax_disp] = width_nAvg(x,Y10); Y10=Y10/nMax_disp;
+
+X = [X1; X2; X3; X4; X5;x;x;x;x;x]; Y = [Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Y10];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]];
+labels={'$$\tau=0.1$$','$$\tau=0.5$$','$$\tau=1$$','$$\tau=1.5$$','$$\tau=2$$'};
+plotter_multX(X,Y',colors,labels)
+
+
+
+% flux at the inlet vs time
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+
+visualize_time
+Y1 = flux_inlet;
+colors=[[0.7 0 0]];
+labels={'full 2D'};
+plotter_multTime([time],[Y1]',colors,labels)
+
+visualize_time
+Y1 = flux_inlet;
+n_yavg_03142021
+flux_inlet_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	nYavg_inlet12 = N_yavg_solved(counter,:,1); nYavg_inlet12 = nYavg_inlet12(1:2);
+	[cSolute, dcSolutedX] = solute_withDerivative_copy(x,t(counter));
+	dndx = (nYavg_inlet12(2)-nYavg_inlet12(1))/(x(2)-x(1));
+	VDP = Gp_Ds*dcSolutedX/cSolute; Vs = Gw_Ds*dcSolutedX/cSolute;
+	calDp = Dp_Ds*(1 + (2/105)*l_h^-2*Dp_Ds^-1*Vs*Vs);
+	flux_inlet_disp(counter) = 2*l_h^-1*(VDP(1)*N_yavg_solved(1)-calDp(1)*dndx);
+    counter = counter + 1;
+end
+Y2 = flux_inlet_disp;
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multTime([time;t],[Y1 Y2']',colors,labels)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_GaussIC/';
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_GaussICX03/';
+
+
+% plot nyavg from dispersion with 2D
+which_time = 0.1;
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+n_yavg_withCofVf %n_yavg_03142021
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+Y2 = N_yavg_solved(indT_disp,:,1)';
+X = [X1; X2]; Y = [Y1 Y2];
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multX(X,Y',colors,labels)
+
+% n / nmax
+which_time = 1;
+visualize
+X1 = XYTcolloid_cell{1,1}; 
+Y1 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X1(2:end),Y1(2:end));
+Y1 = Y1/nMax;
+n_yavg_withCofVf %n_yavg_03142021
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+[~,~,~,~,nMax_disp] = width_nAvg(x,N_yavg_solved(indT_disp,:,1));
+Y2 = N_yavg_solved(indT_disp,:,1)'/nMax_disp;
+X = [X1; X2]; Y = [Y1 Y2];
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multX(X,Y',colors,labels)
+
+
+% compare peak locations
+visualize_time
+Y1 = xMaxes;
+n_yavg_withCofVf %n_yavg_03142021
+xMaxes_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,xMaxes_disp(counter),~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+Y2 = xMaxes_disp;
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multTime([time;t],[Y1 Y2']',colors,labels)
+
+% compare widths
+visualize_time
+Y1 = widths;
+n_yavg_withCofVf %n_yavg_03142021
+widths_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[widths_disp(counter),~,~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+Y2 = widths_disp;
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multTime([time;t],[Y1 Y2']',colors,labels)
+
+% compare peak heights
+visualize_time
+Y1 = maxms;
+n_yavg_withCofVf %n_yavg_03142021
+maxms_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,~,~,~,maxms_disp(counter)] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+Y2 = maxms_disp;
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multTime([time;t],[Y1 Y2']',colors,labels)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% plot nyavg from dispersion with 2D
+global PsiW colloid_folder which_time
+PsiW = -4;
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+which_time = 1;
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+n_yavg_03142021
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+Y2 = N_yavg_solved(indT_disp,:,1)';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize
+X3 = XYTcolloid_cell{1,1};
+Y3 = mean(colloid_cell{count,1},2);
+n_yavg_03142021
+[~,indT_disp]=min(abs(t-which_time));
+X4 = x;
+Y4 = N_yavg_solved(indT_disp,:,1)';
+X = [X1; X2; X3; X4]; Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multX(X,Y',colors,labels)
+
+% n / nmax
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+which_time = 1;
+visualize
+X1 = XYTcolloid_cell{1,1}; 
+Y1 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X1(2:end),Y1(2:end));
+Y1 = Y1/nMax;
+n_yavg_03142021
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+[~,~,~,~,nMax_disp] = width_nAvg(x,N_yavg_solved(indT_disp,:,1));
+Y2 = N_yavg_solved(indT_disp,:,1)'/nMax_disp;
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize
+X3 = XYTcolloid_cell{1,1};
+Y3 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X3(2:end),Y3(2:end));
+Y3 = Y3/nMax;
+n_yavg_03142021
+[~,indT_disp]=min(abs(t-which_time));
+X4 = x;
+[~,~,~,~,nMax_disp] = width_nAvg(x,N_yavg_solved(indT_disp,:,1));
+Y4 = N_yavg_solved(indT_disp,:,1)'/nMax_disp;
+X = [X1; X2; X3; X4]; Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multX(X,Y',colors,labels)
+
+
+% compare peak locations
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+visualize_time
+X1 = time; Y1 = xMaxes;
+n_yavg_03142021
+xMaxes_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,xMaxes_disp(counter),~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X2 = t; Y2 = xMaxes_disp';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize_time
+X3 = time; Y3 = xMaxes;
+n_yavg_03142021
+xMaxes_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,xMaxes_disp(counter),~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X4 = t; Y4 = xMaxes_disp';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multTime([X1;X2;X3;X4],[Y1 Y2 Y3 Y4]',colors,labels)
+
+% compare widths
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+visualize_time
+X1 = time; Y1 = widths;
+n_yavg_03142021
+widths_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[widths_disp(counter),~,~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X2 = t; Y2 = widths_disp';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize_time
+X3 = time; Y3 = widths;
+n_yavg_03142021
+widths_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[widths_disp(counter),~,~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X4 = t; Y4 = widths_disp';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multTime([X1;X2;X3;X4],[Y1 Y2 Y3 Y4]',colors,labels)
+
+% compare peak heights
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+visualize_time
+X1 = time; Y1 = maxms;
+n_yavg_03142021
+maxms_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,~,~,~,maxms_disp(counter)] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X2 = t; Y2 = maxms_disp';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize_time
+X3 = time; Y3 = maxms;
+n_yavg_03142021
+maxms_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,~,~,~,maxms_disp(counter)] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X4 = t; Y4 = maxms_disp';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multTime([X1;X2;X3;X4],[Y1 Y2 Y3 Y4]',colors,labels)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% NEW CODE FOR c(Vf)
+
+
+% plot nyavg from dispersion with 2D
+global PsiW colloid_folder which_time
+PsiW = -4;
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+which_time = 1;
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+n_yavg_withCofVf
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+Y2 = N_yavg_solved(indT_disp,:,1)';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize
+X3 = XYTcolloid_cell{1,1};
+Y3 = mean(colloid_cell{count,1},2);
+n_yavg_withCofVf
+[~,indT_disp]=min(abs(t-which_time));
+X4 = x;
+Y4 = N_yavg_solved(indT_disp,:,1)';
+X = [X1; X2; X3; X4]; Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multX(X,Y',colors,labels)
+
+% n / nmax
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+which_time = 1;
+visualize
+X1 = XYTcolloid_cell{1,1}; 
+Y1 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X1(2:end),Y1(2:end));
+Y1 = Y1/nMax;
+n_yavg_withCofVf
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+[~,~,~,~,nMax_disp] = width_nAvg(x,N_yavg_solved(indT_disp,:,1));
+Y2 = N_yavg_solved(indT_disp,:,1)'/nMax_disp;
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize
+X3 = XYTcolloid_cell{1,1};
+Y3 = mean(colloid_cell{count,1},2);
+[~,~,~,~,nMax] = width_nAvg(X3(2:end),Y3(2:end));
+Y3 = Y3/nMax;
+n_yavg_withCofVf
+[~,indT_disp]=min(abs(t-which_time));
+X4 = x;
+[~,~,~,~,nMax_disp] = width_nAvg(x,N_yavg_solved(indT_disp,:,1));
+Y4 = N_yavg_solved(indT_disp,:,1)'/nMax_disp;
+X = [X1; X2; X3; X4]; Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multX(X,Y',colors,labels)
+
+
+% compare peak locations
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+visualize_time
+X1 = time; Y1 = xMaxes;
+n_yavg_withCofVf
+xMaxes_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,xMaxes_disp(counter),~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X2 = t; Y2 = xMaxes_disp';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize_time
+X3 = time; Y3 = xMaxes;
+n_yavg_withCofVf
+xMaxes_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,xMaxes_disp(counter),~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X4 = t; Y4 = xMaxes_disp';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multTime([X1;X2;X3;X4],[Y1 Y2 Y3 Y4]',colors,labels)
+
+% compare widths
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+visualize_time
+X1 = time; Y1 = widths;
+n_yavg_withCofVf
+widths_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[widths_disp(counter),~,~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X2 = t; Y2 = widths_disp';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize_time
+X3 = time; Y3 = widths;
+n_yavg_withCofVf
+widths_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[widths_disp(counter),~,~,~,~] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X4 = t; Y4 = widths_disp';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multTime([X1;X2;X3;X4],[Y1 Y2 Y3 Y4]',colors,labels)
+
+% compare peak heights
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+PsiW = -4;
+visualize_time
+X1 = time; Y1 = maxms;
+n_yavg_withCofVf
+maxms_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,~,~,~,maxms_disp(counter)] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X2 = t; Y2 = maxms_disp';
+colloid_folder = 'data/colloid/PsiW0_Dp1en2_n1n1/';
+PsiW = 0;
+visualize_time
+X3 = time; Y3 = maxms;
+n_yavg_withCofVf
+maxms_disp = zeros(size(t));
+counter = 1;
+while counter <= length(t)
+	[~,~,~,~,maxms_disp(counter)] = width_nAvg(x,N_yavg_solved(counter,:,1));
+    counter = counter + 1;
+end
+X4 = t; Y4 = maxms_disp';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'full 2D $$\Psi_w=-4$$','dispersion $$\Psi_w=-4$$','full 2D $$\Psi_w=0$$',
+'dispersion $$\Psi_w=0$$'};
+plotter_multTime([X1;X2;X3;X4],[Y1 Y2 Y3 Y4]',colors,labels)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% plot nyavg from dispersion with 2D, scaling by num particles in time
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1_repairedBoundary/';
+which_time = 1.5;
+visualize_time
+visualize
+X1 = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2)*cumulative_nParticles;
+n_yavg_03142021
+[~,indT_disp]=min(abs(t-which_time));
+X2 = x;
+counter = 1; int_x = zeros(1,time_integrate_range);
+while counter <= time_integrate_range
+	int_x(counter) = trapz(x,N_yavg_solved(counter,:));
+	counter = counter+1;
+end
+cumInt = 2/l_h*trapz(time(1:time_integrate_range),int_x(1:time_integrate_range));
+Y2 = N_yavg_solved(indT_disp,:,1)'/cumInt;
+X = [X1; X2]; Y = [Y1 Y2];
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'full 2D','dispersion'};
+plotter_multX(X,Y',colors,labels)
+
+
+% nyavgs 
+which_time = 1.5
+
+colloid_folder = "data/colloid/PsiWneg4_tau2/";
+visualize
+X = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3/";
+visualize
+Y2 = mean(colloid_cell{count,1},2);
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2/";
+visualize
+Y3 = mean(colloid_cell{count,1},2); Y=[Y1 Y2 Y3];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$D_p/D_s=10^{-4}$$','$$D_p/D_s=10^{-3}$$','$$D_p/D_s=10^{-2}$$'};
+plotter(X,Y',colors,labels)
+
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2_n1n1/";
+visualize
+X = XYTcolloid_cell{1,1};
+Y1 = mean(colloid_cell{count,1},2);
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3_n1n1/";
+visualize
+Y2 = mean(colloid_cell{count,1},2);
+colloid_folder = "data/colloid/PsiW0_Dp1en2_n1n1/";
+visualize
+Y3 = mean(colloid_cell{count,1},2);
+colloid_folder = "data/colloid/PsiW0_Dp1en3_n1n1/";
+visualize
+Y4 = mean(colloid_cell{count,1},2); Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$$\Psi_w=-4,~D_p/D_s=10^{-2}$$','$$\Psi_w=-4,~D_p/D_s=10^{-3}$$',...
+'$$\Psi_w=0,~D_p/D_s=10^{-2}$$','$$\Psi_w=0,~D_p/D_s=10^{-3}$$'};
+plotter(X,Y',colors,labels)
+
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2_n1n1/";
+visualize
+contour_local(xx_nCell,yy_nCell,colloid_cell{count,1},0,0)
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3_n1n1/";
+visualize
+contour_local(xx_nCell,yy_nCell,colloid_cell{count,1},0,0)
+colloid_folder = "data/colloid/PsiW0_Dp1en2_n1n1/";
+visualize
+contour_local(xx_nCell,yy_nCell,colloid_cell{count,1},0,0)
+colloid_folder = "data/colloid/PsiW0_Dp1en3_n1n1/";
+visualize
+contour_local(xx_nCell,yy_nCell,colloid_cell{count,1},0,0)
+
+
+
+colloid_folder = "data/colloid/PsiWneg4_tau2/";
+visualize
+contour_local(xx_nCell,yy_nCell,colloid_cell{count,1},0,0)
+
+colloid_folder = "data/colloid/PsiWneg4_tau2/";
+visualize
+contour_local(xx_nCell,yy_nCell,colloid_cell{count,1}-mean(colloid_cell{count,1},2),0,0)
+
+
+%% plot the perturbation
+colloid_folder = 'data/colloid/PsiWneg4_Dp1en2_n1n1/';
+which_time = 0.2
+visualize 
+
+x_index = 25;
+XYTcolloid_cell{1,1}(x_index)
+nMean = mean(colloid_cell{count,1},2);
+nPertSim = colloid_cell{count,1}-nMean;
+nCenterline = colloid_cell{count,1}(:,int8(size(colloid_cell{count,1},2)/2));
+l_h = solute_log.L_h; dX = colloid_log.dx; DpDs = colloid_log.Dp_Ds;
+dnMeandX = (nMean(x_index+1)-nMean(x_index-1))/(2*dX);
+Y = XYTcolloid_cell{1,2};
+nPertCalc = (0.5/DpDs)*l_h^-2*dnMeandX*Vs(x_index)*(0.25*l_h^4*Y.^4-0.5*l_h^2*Y.^2)...
++nCenterline(x_index)-nMean(x_index);
+Y_ax = [nPertSim(x_index,:);nPertCalc];
+colors=[[0.7 0 0];[0 0.7 0]];
+labels={'simulated','calculated'};
+plotter(Y, Y_ax,colors,labels)
+
+%nPertCalc = (1/(8*DpDs))*l_h^2*dnMeandX*Vs(x_index)*(l_h^(-2) - Y.^2).^2;
+plot_one_line(Y,nPertSim(x_index,:))
+
+
+%%%
+
+
+% mathcal Up vs Dp
+global time_now Dp_Ds
+
+time_now = 0.8;
+Dps = logspace(-4,-2);
+Ups = zeros(3,size(Dps,2));
+Up = zeros(1,size(Dps,2));
+counter = 1;
+while (counter < size(Dps,2))
+Dp_Ds = Dps(counter);
+n_yavgDEBUG
+Up(counter) = Up_Ds(int8(end/2));
+counter = counter + 1;
+end
+Ups(1,:) = Up; %%
+time_now = 1.6;
+counter = 1;
+Up = zeros(1,size(Dps,2));
+while (counter < size(Dps,2))
+Dp_Ds = Dps(counter);
+n_yavgDEBUG
+Up(counter) = Up_Ds(int8(end/2));
+counter = counter + 1;
+end
+Ups(2,:) = Up; %%
+time_now = 2.0;
+counter = 1;
+Up = zeros(1,size(Dps,2));
+while (counter < size(Dps,2))
+Dp_Ds = Dps(counter);
+n_yavgDEBUG
+Up(counter) = Up_Ds(int8(end/2));
+counter = counter + 1;
+end
+Ups(3,:) = Up; %%
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$\tau=0.8$$','$$\tau=1.6$$','$$\tau=2.0$$'};
+plotter(Dps,Ups,colors,labels)
+
+% mathcal Dp vs tau
+global time_now Dp_Ds
+
+Dp_Ds = 1e-4;
+tau = linspace(0.0,2.0);
+Ups = zeros(3,size(tau,2));
+Up = zeros(1,size(tau,2));
+counter = 1;
+while (counter < size(tau,2))
+time_now = tau(counter);
+n_yavgDEBUG
+Up(counter) = Up_Ds(int8(end/2));
+counter = counter + 1;
+end
+Ups(1,:) = Up; %%
+Dp_Ds = 1e-3;
+counter = 1;
+Up = zeros(1,size(tau,2));
+while (counter < size(tau,2))
+time_now = tau(counter);
+n_yavgDEBUG
+Up(counter) = Up_Ds(int8(end/2));
+counter = counter + 1;
+end
+Ups(2,:) = Up; %%
+Dp_Ds = 1e-2;
+counter = 1;
+Up = zeros(1,size(tau,2));
+while (counter < size(tau,2))
+time_now = tau(counter);
+n_yavgDEBUG
+Up(counter) = Up_Ds(int8(end/2));
+counter = counter + 1;
+end
+Ups(3,:) = Up; %%
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$D_p/D_s=1\times10^{-4}$$','$$D_p/D_s=1\times10^{-3}$$','$$D_p/D_s=1\times10^{-2}$$'};
+plotter(tau,Ups,colors,labels)
+
+
+
+% mathcal Dp vs Dp
+global time_now Dp_Ds
+
+time_now = 0.8;
+Dps = logspace(-4,-2);
+calDps = zeros(3,size(Dps,2));
+calDp = zeros(1,size(Dps,2));
+counter = 1;
+while (counter < size(Dps,2))
+Dp_Ds = Dps(counter);
+n_yavgDEBUG
+calDp(counter) = calDp_Ds(int8(end/2));
+counter = counter + 1;
+end
+calDps(1,:) = calDp; %%
+time_now = 1.6;
+counter = 1;
+calDp = zeros(1,size(Dps,2));
+while (counter < size(Dps,2))
+Dp_Ds = Dps(counter);
+n_yavgDEBUG
+calDp(counter) = calDp_Ds(int8(end/2));
+counter = counter + 1;
+end
+calDps(2,:) = calDp; %%
+time_now = 2.0;
+counter = 1;
+calDp = zeros(1,size(Dps,2));
+while (counter < size(Dps,2))
+Dp_Ds = Dps(counter);
+n_yavgDEBUG
+calDp(counter) = calDp_Ds(int8(end/2));
+counter = counter + 1;
+end
+calDps(3,:) = calDp; %%
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$\tau=0.8$$','$$\tau=1.6$$','$$\tau=2.0$$'};
+plotter(Dps,calDps,colors,labels)
+
+% mathcal Dp vs tau
+global time_now Dp_Ds
+
+Dp_Ds = 1e-4;
+tau = linspace(0.0,2.0);
+calDps = zeros(3,size(tau,2));
+calDp = zeros(1,size(tau,2));
+counter = 1;
+while (counter < size(tau,2))
+time_now = tau(counter);
+n_yavgDEBUG
+calDp(counter) = calDp_Ds(int8(end/2));
+counter = counter + 1;
+end
+calDps(1,:) = calDp; %%
+Dp_Ds = 1e-3;
+counter = 1;
+calDp = zeros(1,size(tau,2));
+while (counter < size(tau,2))
+time_now = tau(counter);
+n_yavgDEBUG
+calDp(counter) = calDp_Ds(int8(end/2));
+counter = counter + 1;
+end
+calDps(2,:) = calDp; %%
+Dp_Ds = 1e-2;
+counter = 1;
+calDp = zeros(1,size(tau,2));
+while (counter < size(tau,2))
+time_now = tau(counter);
+n_yavgDEBUG
+calDp(counter) = calDp_Ds(int8(end/2));
+counter = counter + 1;
+end
+calDps(3,:) = calDp; %%
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$D_p/D_s=1\times10^{-4}$$','$$D_p/D_s=1\times10^{-3}$$','$$D_p/D_s=1\times10^{-2}$$'};
+plotter(tau,calDps,colors,labels)
+
+%%%%%%%%
+global colloid_folder
+
+colloid_folder = "data/colloid/PsiWneg4_tau2/";
+visualize_time
+Y1 = widths;
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3/";
+visualize_time
+Y2 = widths;
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2/";
+visualize_time
+Y3 = widths; Y = [Y1 Y2 Y3];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$D_p/D_s=1\times10^{-4}$$','$$D_p/D_s=1\times10^{-3}$$','$$D_p/D_s=1\times10^{-2}$$'};
+plotter_time(time,Y',colors,labels)
+
+colloid_folder = "data/colloid/PsiWneg4_tau2/";
+visualize_time
+Y1 = xMaxes;
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3/";
+visualize_time
+Y2 = xMaxes;
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2/";
+visualize_time
+Y3 = xMaxes; Y = [Y1 Y2 Y3];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+labels={'$$D_p/D_s=1\times10^{-4}$$','$$D_p/D_s=1\times10^{-3}$$','$$D_p/D_s=1\times10^{-2}$$'};
+plotter_time(time,Y',colors,labels)
+
+%%%%%%%%
+
+colloid_folder = "data/colloid/PsiWneg4_tau2/";
+visualize_time
+Y1 = widths;
+colloid_folder = "data/colloid/PsiWneg2_tau2/";
+visualize_time
+Y2 = widths;
+colloid_folder = "data/colloid/PsiW0_tau2/";
+visualize_time
+Y3 = widths;
+colloid_folder = "data/colloid/PsiW2_tau2/";
+visualize_time
+Y4 = widths;
+colloid_folder = "data/colloid/PsiW4_tau2/";
+visualize_time
+Y5 = widths; Y = [Y1 Y2 Y3 Y4 Y5]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]]
+labels={'$$\Psi_w=-4$$','$$\Psi_w=-2$$','$$\Psi_w=0$$','$$\Psi_w=2$$','$$\Psi_w=4$$'}
+plotter_time(time,Y',colors,labels)
+
+
+
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2_n1n1/";
+visualize_time
+Y1 = widths;
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3_n1n1/";
+visualize_time
+Y2 = widths;
+colloid_folder = "data/colloid/PsiW0_Dp1en2_n1n1/";
+visualize_time
+Y3 = widths;
+colloid_folder = "data/colloid/PsiW0_Dp1en3_n1n1/";
+visualize_time
+Y4 = widths; Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$$\Psi_w=-4,~D_p/D_s=10^{-2}$$','$$\Psi_w=-4,~D_p/D_s=10^{-3}$$',...
+'$$\Psi_w=0,~D_p/D_s=10^{-2}$$','$$\Psi_w=0,~D_p/D_s=10^{-3}$$'};
+plotter_time(time,Y',colors,labels)
+
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2_n1n1/";
+visualize_time
+Y1 = xMaxes;
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3_n1n1/";
+visualize_time
+Y2 = xMaxes;
+colloid_folder = "data/colloid/PsiW0_Dp1en2_n1n1/";
+visualize_time
+Y3 = xMaxes;
+colloid_folder = "data/colloid/PsiW0_Dp1en3_n1n1/";
+visualize_time
+Y4 = xMaxes; Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$$\Psi_w=-4,~D_p/D_s=10^{-2}$$','$$\Psi_w=-4,~D_p/D_s=10^{-3}$$',...
+'$$\Psi_w=0,~D_p/D_s=10^{-2}$$','$$\Psi_w=0,~D_p/D_s=10^{-3}$$'};
+plotter_time(time,Y',colors,labels)
+
+colloid_folder = "data/colloid/PsiWneg4_Dp1en2_n1n1/";
+visualize_time
+Y1 = mean(Vs);
+colloid_folder = "data/colloid/PsiWneg4_Dp1en3_n1n1/";
+visualize_time
+Y2 = mean(Vs);
+colloid_folder = "data/colloid/PsiW0_Dp1en2_n1n1/";
+visualize_time
+Y3 = mean(Vs);
+colloid_folder = "data/colloid/PsiW0_Dp1en3_n1n1/";
+visualize_time
+Y4 = mean(Vs); Y = [Y1 Y2 Y3 Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$$\Psi_w=-4,~D_p/D_s=10^{-2}$$','$$\Psi_w=-4,~D_p/D_s=10^{-3}$$',...
+'$$\Psi_w=0,~D_p/D_s=10^{-2}$$','$$\Psi_w=0,~D_p/D_s=10^{-3}$$'};
+plotter_time(time,Y',colors,labels)
+
+
+%%%%%%%%
+
+global time_now PsiW
+time_now = 2.0
+PsiW = -4
+n_yavgDEBUG
+Y1=calDp_Ds;
+PsiW = -2
+n_yavgDEBUG
+Y2=calDp_Ds;
+PsiW = 0
+n_yavgDEBUG
+Y3=calDp_Ds;
+PsiW = 2
+n_yavgDEBUG
+Y4=calDp_Ds;
+PsiW = 4
+n_yavgDEBUG
+Y5=calDp_Ds; Y = [Y1;Y2;Y3;Y4;Y5]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]]
+labels={'$$\Psi_w=-4$$','$$\Psi_w=-2$$','$$\Psi_w=0$$','$$\Psi_w=2$$','$$\Psi_w=4$$'}
+plotter(x,Y,colors,labels)
+
+%%%%%%%%
+
+which_time = 0.1
+count = ind_closest(which_time,XYTcolloid_cell{1,3})
+
+contour_and_vector(xx_cCell,yy_cCell,c3_matrices(:,:,count),c3_min,c3_max,vf_x,vf_y)
+
+which_time = 0.1
+visualize
+contour_local(xx_nCell,yy_nCell,colloid_cell{count,1},0,0)
+
+% the wall rows have half dy
+colloid_folder = 'data/colloid/PsiW_neg4_PsiD_neg3_hiDef/'
+which_time = 0.021
+visualize
+X=XYTsolute_cell{1,1};
+Y=mean([vf_x(1,:)/2; vf_x(2:end-1,:); vf_x(end,:)/2],1)';
+plot_one_line(X,Y)
+
+%plot velocity
+visualize
+X=XYTsolute_cell{1,2};
+Y=mean(vf_y,2);
+plot_one_line(X,Y)
+
+X=XYTsolute_cell{1,2};
+Y=mean(vf_x,2);
+plot_one_line(X,Y)
+
+%plotting the solute concentration for varying wall potential
+which_time = 0.021
+colloid_folder = 'data/colloid/PsiW_neg4_PsiD_neg3/';
+visualize
+X=XYTsolute_cell{1,1};
+Y1=mean(c_interpolated(:,:,count),2)';
+colloid_folder = 'data/colloid/PsiW_0_PsiD_neg3/';
+visualize
+Y2=mean(c_interpolated(:,:,count),2)';
+colloid_folder = 'data/colloid/PsiW_4_PsiD_neg3/';
+visualize
+Y3=mean(c_interpolated(:,:,count),2)';
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+Y=[Y1;Y2;Y3];
+labels={'$\Psi_w$=-4','$\Psi_w$=0','$\Psi_w$=4'};
+plotter(X,Y,colors,labels)
+
+% plotting slip velocity
+colloid_folder = 'data/colloid/PsiW_neg4_PsiD_neg3_hiDef/'
+which_time = 0.021
+visualize
+X=XYTsolute_cell{1,1};
+Y1=Vs;
+which_time = 0.1
+visualize
+Y2=Vs;
+which_time = 0.25
+visualize
+Y3=Vs;
+which_time = 0.4
+visualize
+Y4=Vs;
+Y=[Y1;Y2;Y3;Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$\tau$=0.02','$\tau$=0.1','$\tau$=0.25','$\tau$=0.4'};
+plotter(X,Y,colors,labels)
+
+% plotting slip velocity derivative
+which_time = 0.021
+visualize
+X=XYTsolute_cell{1,1};
+Y1=dVsdx;
+which_time = 0.1
+visualize
+Y2=dVsdx;
+which_time = 0.25
+visualize
+Y3=dVsdx;
+which_time = 0.4
+visualize
+Y4=dVsdx;
+Y=[Y1;Y2;Y3;Y4];
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$\tau$=0.02','$\tau$=0.1','$\tau$=0.25','$\tau$=0.4'};
+plotter(X,Y,colors,labels)
+
+
+global time_now
+time_now = 0;
+n_yavgDEBUG
+Y1=calDp_Ds;
+time_now = 0.15;
+n_yavgDEBUG
+Y2=calDp_Ds;
+time_now = 0.3;
+n_yavgDEBUG
+Y3=calDp_Ds;
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9]];
+Y=[Y1;Y2;Y3];
+labels={'$\tau$=0','$\tau$=0.15','$\tau$=0.3'};
+plotter(x,Y,colors,labels)
+
+
+
+% these are incorrect for calculating average velocity
+colloid_folder = 'data/colloid/PsiW_neg4_PsiD_neg3/'
+which_time = 0.021
+visualize
+X=XYTsolute_cell{1,1};
+Y=mean(vf_x,1)';
+plot_one_line(X,Y)
+
+X=XYTsolute_cell{1,2};
+Y=mean(vf_y,2)';
+plot_one_line(X,Y)
+
+% centerline velocity
+Y=vf_x(int8(end/2),:)' 
+
+X=XYTsolute_cell{1,2};
+Y=vf_x(:,1)';
+plot_one_line(X,Y)
+
+colloid_folder = 'data/colloid/PsiW_neg4_PsiD_neg3_hiDef/'
+which_time = 0.021
+visualize
+X=XYTsolute_cell{1,1};
+Y1=mean(vf_x,1);
+which_time = 0.1
+visualize
+Y2=mean(vf_x,1);
+which_time = 0.25
+visualize
+Y3=mean(vf_x,1);
+which_time = 0.4
+visualize
+Y4=mean(vf_x,1);
+Y=[Y1;Y2;Y3;Y4]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$\tau$=0.02','$\tau$=0.1','$\tau$=0.25','$\tau$=0.4'};
+plotter(X,Y,colors,labels)
+
+which_time = 0.021
+visualize
+Y=XYTsolute_cell{1,2};
+Y1=mean(vf_y,1);
+which_time = 0.1
+visualize
+Y2=mean(vf_y,1);
+which_time = 0.25
+visualize
+Y3=mean(vf_y,1);
+which_time = 0.4
+visualize
+Y4=mean(vf_y,1);
+Y=[Y1;Y2;Y3;Y4]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]];
+labels={'$\tau$=0.02','$\tau$=0.1','$\tau$=0.25','$\tau$=0.4'};
+plotter(X,Y,colors,labels)
+
+
+
+
+%%%%%%%%% OLD 
+
+colloid_folder = 'data/colloid/10mM_KCl_combination_B/'
+visualize
+X=XYTcolloid_cell{1,1}
+Y1=mean(colloid_cell{count,1},2)'
+colloid_folder = 'data/colloid/suin_3b/'
+visualize
+Y2=mean(colloid_cell{count,1},2)'
+Y = [Y1;Y2]
+colors=[[0.7 0 0];[0 0.7 0]]
+labels={'II','VI'}
+plotter(X,Y,colors,labels)
+
+colloid_folder = 'data/colloid/10mM_KCl_combination_D_long/'
+which_time = 0.2
+visualize
+X=XYTcolloid_cell{1,1}
+Y1=mean(colloid_cell{count,1},2)'
+which_time = 0.4
+visualize
+Y2=mean(colloid_cell{count,1},2)'
+which_time = 0.6
+visualize
+Y3=mean(colloid_cell{count,1},2)'
+which_time = 0.8
+visualize
+Y4=mean(colloid_cell{count,1},2)'
+which_time = 1.0
+visualize
+Y5=mean(colloid_cell{count,1},2)'
+Y = [Y1;Y2;Y3;Y4;Y5]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]]
+labels={'\tau=0.2','\tau=0.4','\tau=0.6','\tau=0.8','\tau=1.0'}
+plotter(X,Y,colors,labels)
+
+
+%%%%%%%%%% combined exp and sim
+
+% 1ad y=0
+which_time = 0.5
+colloid_folder = 'data/colloid/10mM_KCl_combination_A/'
+visualize
+Xa = XYTcolloid_cell{1,1}
+Y1 = colloid_cell{count,1}(:,10)'
+colloid_folder = 'data/colloid/10mM_KCl_combination_B/'
+visualize
+Y2 = colloid_cell{count,1}(:,10)'
+colloid_folder = 'data/colloid/10mM_KCl_combination_C/'
+visualize
+Y3 = colloid_cell{count,1}(:,10)'
+colloid_folder = 'data/colloid/10mM_KCl_combination_D/'
+visualize
+Y4 = colloid_cell{count,1}(:,10)'
+Ya = [Y1;Y2;Y3;Y4]
+Xb = linspace(0,1,480)
+Yb = [E1a_centerline;E1b_centerline;E1c_centerline;E1d_centerline]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]]
+labels={'I','I','II','II','III','III','IV','IV'}
+plot_title = "1ad y=0"
+plotter_dashedLine(Xa,Xb,Ya,Yb,colors,labels,plot_title)
+
+% 1ad y avg
+which_time = 0.5
+colloid_folder = 'data/colloid/10mM_KCl_combination_A/'
+visualize
+Xa = XYTcolloid_cell{1,1}
+Y1 = mean(colloid_cell{count,1},2)'
+colloid_folder = 'data/colloid/10mM_KCl_combination_B/'
+visualize
+Y2 = mean(colloid_cell{count,1},2)'
+colloid_folder = 'data/colloid/10mM_KCl_combination_C/'
+visualize
+Y3 = mean(colloid_cell{count,1},2)'
+colloid_folder = 'data/colloid/10mM_KCl_combination_D/'
+visualize
+Y4 = mean(colloid_cell{count,1},2)'
+Ya = [Y1;Y2;Y3;Y4]
+Xb = linspace(0,1,480)
+Yb = [E1a_y_avg;E1b_y_avg;E1c_y_avg;E1d_y_avg]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0]]
+labels={'I','I','II','II','III','III','IV','IV'}
+plot_title = "1ad y avg"
+plotter_dashedLine(Xa,Xb,Ya,Yb,colors,labels,plot_title)
+
+% 1d tau y avg
+colloid_folder = 'data/colloid/10mM_KCl_combination_D_long/'
+which_time = 0.2
+visualize
+Xa = XYTcolloid_cell{1,1}
+Y1 = mean(colloid_cell{count,1},2)'
+which_time = 0.4
+visualize
+Y2 = mean(colloid_cell{count,1},2)'
+which_time = 0.6
+visualize
+Y3 = mean(colloid_cell{count,1},2)'
+which_time = 0.8
+visualize
+Y4 = mean(colloid_cell{count,1},2)'
+which_time = 1.0
+visualize
+Y5 = mean(colloid_cell{count,1},2)'
+Ya = [Y1;Y2;Y3;Y4;Y5]
+Xb = linspace(0,1,480)
+Yb = [Eiv_y_avg_tau02;Eiv_y_avg_tau04;Eiv_y_avg_tau06;...
+	Eiv_y_avg_tau08;Eiv_y_avg_tau10]
+colors=[[0.7 0 0];[0 0.7 0];[0 0 0.9];[0 0 0];[0.5 0.5 0.5]]
+labels={'t=0.2','t=0.2','t=0.4','t=0.4','t=0.6','t=0.6',...
+	't=0.8','t=0.8','t=1.0','t=1.0'}
+plot_title = "1d tau y avg"
+plotter_dashedLine(Xa,Xb,Ya,Yb,colors,labels,plot_title)
+
+
